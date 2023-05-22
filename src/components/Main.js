@@ -27,6 +27,25 @@ const Main = (props) => {
     getCustomers()
   }
 
+  const updateCustomers = async (customer, id) => {
+    await fetch(URL + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(customer)
+    })
+  }
+
+  const deleteCustomers = async id => {
+    // make delete request to create customers
+    await fetch(URL + id, {
+      method: 'DELETE',
+    })
+    // update list of customers
+    getCustomers()
+  }
+
   useEffect(() => {getCustomers()}, [])
 
   return (
@@ -36,8 +55,13 @@ const Main = (props) => {
         <Route
           path='/customers/:id'
           element = {
-            <Show />
-          } />
+            <Show
+              customers={customers}
+              updateCustomers={updateCustomers}
+              deleteCustomers={deleteCustomers}
+            />
+          }
+        />
       </Routes>
     </main>
   )
