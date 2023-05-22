@@ -9,7 +9,7 @@ const Show = (props) => {
 
   // state for form
   const [ editForm, setEditForm ] = useState(customer)
-  // const [ isEditing, setIsEditing ] = useState(false)
+  const [ isEditing, setIsEditing ] = useState(false)
 
   // handleChange function
   const handleChange = (event) => {
@@ -25,11 +25,25 @@ const Show = (props) => {
     props.updateCustomers(editForm, customer._id)
   }
 
+  // handleEdit function
+  const handleEdit = () => {
+    // sets the value of isEditing to its opposite when function is called
+    setIsEditing(prevState => !prevState)
+  }
+
+  // handleDelete function
+  const handleDelete = () => {
+    props.deleteCustomers(customer._id)
+    navigate('/') // returns to root
+  }
+
   const loaded = () => {
     return (
       <>
         <h1>{customer.name}</h1>
         <h2>{customer.phoneNumber}</h2>
+        <button onClick={handleEdit}>{ isEditing ? 'Cancel' : 'Edit' }</button>
+        <button onClick={handleDelete}>Delete</button>
       </>
     )
   }
@@ -42,7 +56,7 @@ const Show = (props) => {
     <div className='customer'>
       { customer ? loaded() : loading() }
 
-      {/* { isEditing && */}
+      { isEditing &&
         <form onSubmit={handleUpdate}>
           <input
             type='text'
@@ -58,9 +72,9 @@ const Show = (props) => {
             placeholder='phoneNumber'
             onChange={handleChange}
           />
-          <input type='submit' value={'Update Customer'} />
+          <input type='submit' value='Update Customer' />
         </form>
-      {/* } */}
+      }
     </div>
   )
 }
