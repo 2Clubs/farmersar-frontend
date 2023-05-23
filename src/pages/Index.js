@@ -26,14 +26,21 @@ const Index = (props) => {
     })
   }
 
+// currencyFormat function retrieved from https://stackoverflow.com/questions/55556221/how-do-you-format-a-number-to-currency-when-using-react-native-expo
+
+// modified using Number() found: https://stackoverflow.com/questions/55623957/how-to-use-tofixed-method-in-react-jsx
+  const currencyFormat = (num) => {
+    return '$' + Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+ }
+
   // 'loaded' function
   const loaded = () => {
     return props.customers.map((customer) => (
       <div key={customer._id} className='customer'>
         <Card.Link href={`/customers/${customer._id}`}>
-        <Card text='dark' style={{ width: '50rem' }}>
+        <Card text='dark'>
           <Card.Title>{customer.name}</Card.Title>
-          <Card.Body>{customer.phoneNumber}</Card.Body>
+          <Card.Body>{currencyFormat(customer.phoneNumber)}</Card.Body>
         </Card>
         </Card.Link>
       </div>
@@ -46,28 +53,26 @@ const Index = (props) => {
 
   return (
       <section>
-          {props.customers ? loaded() : loading()}
-        <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>
-
-          <input
-            type='text'
-            value={newForm.name}
-            name='name'
-            placeholder='name'
-            onChange={handleChange}
-          />
-          <input
-            type='text'
-            value={newForm.phoneNumber}
-            name='phoneNumber'
-            placeholder='phoneNumber'
-            onChange={handleChange}
-          />
-          <Button variant='primary' type='submit'>Create Customer</Button>
-
+            <input
+              type='text'
+              value={newForm.name}
+              name='name'
+              placeholder='Description'
+              onChange={handleChange}
+            />
+            <input
+              type='text'
+              value={newForm.phoneNumber}
+              name='phoneNumber'
+              placeholder='Amount'
+              onChange={handleChange}
+            />
+            <Button variant='primary' type='submit'>Create Invoice</Button>
           </Form.Group>
-        </Form>
+        </form>
+        {props.customers ? loaded() : loading()}
       </section>
     )
 }

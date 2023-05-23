@@ -39,12 +39,19 @@ const Show = (props) => {
     navigate('/') // returns to root
   }
 
+// currencyFormat function retrieved from https://stackoverflow.com/questions/55556221/how-do-you-format-a-number-to-currency-when-using-react-native-expo
+
+// modified using Number() found: https://stackoverflow.com/questions/55623957/how-to-use-tofixed-method-in-react-jsx
+  const currencyFormat = (num) => {
+    return '$' + Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+ }
+
   const loaded = () => {
     return (
-      <Card style={{ width: '18rem' }}>
+      <Card>
         <Card.Body>
           <Card.Title>{customer.name}</Card.Title>
-          <Card.Text>{customer.phoneNumber}</Card.Text>
+          <Card.Text>{currencyFormat(customer.phoneNumber)}</Card.Text>
           <Button variant="primary" onClick={handleEdit}>{ isEditing ? 'Cancel' : 'Edit' }</Button>{ ' ' }
           <Button variant="danger" onClick={handleDelete}>Delete</Button>
         </Card.Body>
@@ -66,14 +73,14 @@ const Show = (props) => {
             type='text'
             value={editForm.name}
             name='name'
-            placeholder='name'
+            placeholder='Description'
             onChange={handleChange}
           />
           <input
             type='text'
-            value={editForm.phoneNumber}
+            value={currencyFormat(editForm.phoneNumber)}
             name='phoneNumber'
-            placeholder='phoneNumber'
+            placeholder='Amount'
             onChange={handleChange}
           />
           <input type='submit' value='Update Customer' />
