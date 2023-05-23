@@ -21,7 +21,7 @@ This app is designed to be a tool that farmers can use to keep track of their ac
 
 ### Getting Started
 
-The app is deployed on Netlify [here](https://646ca6f7416f3407a61ba423--deluxe-sfogliatella-097f50.netlify.app/). Once at the site, begin creating logs at will!
+The app is deployed on Netlify [here](https://deluxe-sfogliatella-097f50.netlify.app/). Once at the site, begin creating logs at will!
 
 ### Tello
 
