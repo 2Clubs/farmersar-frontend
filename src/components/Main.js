@@ -6,7 +6,8 @@ import Show from '../pages/Show'
 const Main = (props) => {
   const [ customers, setCustomers ] = useState(null)
 
-  const URL = 'http://localhost:4000/customers/'
+  // const URL = 'http://localhost:4000/customers/'
+  const URL = 'https://farmersar-backend.onrender.com/customers/'
 
   const getCustomers = async () => {
     const response = await fetch(URL)

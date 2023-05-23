@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 
 const Index = (props) => {
@@ -48,6 +49,8 @@ const Index = (props) => {
       <section>
           {props.customers ? loaded() : loading()}
         <Form onSubmit={handleSubmit}>
+          <Form.Group className='mb-3'>
+
           <input
             type='text'
             value={newForm.name}
@@ -62,7 +65,9 @@ const Index = (props) => {
             placeholder='phoneNumber'
             onChange={handleChange}
           />
-          <input type='submit' value={'Create Customer'} />
+          <Button variant='primary' type='submit'>Create Customer</Button>
+
+          </Form.Group>
         </Form>
       </section>
     )
