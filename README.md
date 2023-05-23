@@ -25,4 +25,4 @@ The app is deployed on Netlify [here](https://646ca6f7416f3407a61ba423--deluxe-s
 
 ### Tello
 
-![ERD](https://trello.com/b/1dix91ef/farmersar)
+[Trello Board](https://trello.com/b/1dix91ef/farmersar)
