@@ -26,3 +26,11 @@ The app is deployed on Netlify [here](https://deluxe-sfogliatella-097f50.netlify
 ### Tello
 
 [Trello Board](https://trello.com/b/1dix91ef/farmersar)
+
+### Future Enhancements
+
+- Database relationships
+- Standard & custom units
+- Outstanding balances by customer
+- KPIs
+- Aging report
