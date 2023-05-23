@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Header = (props) => {
   return (
-    <Navbar bg='light' expand='lg'>
+    <Navbar bg='secondary' variant='light' expand='lg'>
       <Container>
       <Navbar.Brand href='/'>FarmersAR</Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav'/>
