@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
@@ -12,6 +12,12 @@ const Show = (props) => {
   // state for form
   const [ editForm, setEditForm ] = useState(customer)
   const [ isEditing, setIsEditing ] = useState(false)
+
+  useEffect( () => {
+    if (customer) {
+      setEditForm(customer)
+    }
+  }, [customer])
 
   // handleChange function
   const handleChange = (event) => {
@@ -73,12 +79,12 @@ const Show = (props) => {
             type='text'
             value={editForm.name}
             name='name'
-            placeholder='Description'
+            placeholder='name'
             onChange={handleChange}
           />
           <input
             type='text'
-            value={currencyFormat(editForm.phoneNumber)}
+            value={editForm.phoneNumber}
             name='phoneNumber'
             placeholder='Amount'
             onChange={handleChange}

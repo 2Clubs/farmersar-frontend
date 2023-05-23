@@ -59,7 +59,7 @@ const Index = (props) => {
               type='text'
               value={newForm.name}
               name='name'
-              placeholder='Description'
+              placeholder='name'
               onChange={handleChange}
             />
             <input
