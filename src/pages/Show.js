@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 const Show = (props) => {
   const { id } = useParams()
@@ -39,12 +41,14 @@ const Show = (props) => {
 
   const loaded = () => {
     return (
-      <>
-        <h1>{customer.name}</h1>
-        <h2>{customer.phoneNumber}</h2>
-        <button onClick={handleEdit}>{ isEditing ? 'Cancel' : 'Edit' }</button>
-        <button onClick={handleDelete}>Delete</button>
-      </>
+      <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>{customer.name}</Card.Title>
+          <Card.Text>{customer.phoneNumber}</Card.Text>
+          <Button variant="primary" onClick={handleEdit}>{ isEditing ? 'Cancel' : 'Edit' }</Button>{ ' ' }
+          <Button variant="danger" onClick={handleDelete}>Delete</Button>
+        </Card.Body>
+      </Card>
     )
   }
 

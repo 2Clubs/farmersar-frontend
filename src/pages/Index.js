@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
+import Form from 'react-bootstrap/Form'
+
 
 const Index = (props) => {
   // state to hold formData
@@ -27,10 +30,12 @@ const Index = (props) => {
   const loaded = () => {
     return props.customers.map((customer) => (
       <div key={customer._id} className='customer'>
-        <Link to={`/customers/${customer._id}`}>
-          <h1>{customer.name}</h1>
-          <h2>{customer.phoneNumber}</h2>
-        </Link>
+        <Card.Link href={`/customers/${customer._id}`}>
+        <Card text='dark' style={{ width: '50rem' }}>
+          <Card.Title>{customer.name}</Card.Title>
+          <Card.Body>{customer.phoneNumber}</Card.Body>
+        </Card>
+        </Card.Link>
       </div>
     ))
   }
@@ -41,7 +46,8 @@ const Index = (props) => {
 
   return (
       <section>
-        <form onSubmit={handleSubmit}>
+          {props.customers ? loaded() : loading()}
+        <Form onSubmit={handleSubmit}>
           <input
             type='text'
             value={newForm.name}
@@ -57,8 +63,7 @@ const Index = (props) => {
             onChange={handleChange}
           />
           <input type='submit' value={'Create Customer'} />
-        </form>
-        {props.customers ? loaded() : loading()}
+        </Form>
       </section>
     )
 }
